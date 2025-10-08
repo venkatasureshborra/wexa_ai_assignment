@@ -100,14 +100,14 @@ Automate the entire process — from building the Docker image to deploying it i
 
 To run the workflow on your local machine:
 
-1️⃣ Create a folder on your local system to store the GitHub Action self-hosted runner.  
-2️⃣ Register and configure the runner by following the official documentation:  
-   👉 [GitHub Self-Hosted Runner Setup Guide](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners)
+Create a folder on your local system to store the GitHub Action self-hosted runner.  
+Register and configure the runner by following the official documentation:  
+[GitHub Self-Hosted Runner Setup Guide](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners)
 
 Once configured, the workflow will automatically execute the instructions on your local system whenever code is pushed to the `main` branch.
 
 Example workflow file (`.github/workflows/cicd.yaml`):
-- Note: This is my file according to my system configutration
+- Note: This is my file according to my setup
 ```yaml
 name: CI/CD Pipeline_For_Portfolio_app
 
