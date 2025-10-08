@@ -41,6 +41,31 @@ docker build -t portfolio:latest .
 docker run -d -p 3000:3000 portfolio:latest
 ```
 - Visit: http://IP-of-VM:3000 # if you run it on the VM
+### Pushing Docker Images to GitHub Container Registry (GHCR)
+
+#### Create a Personal Access Token (PAT)
+
+To push Docker images to **GitHub Container Registry**, you need a **Personal Access Token (PAT)** with appropriate permissions.
+
+1. Go to **GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)**  
+2. Click **“Generate new token”** → Select **“Generate new token (classic)”**  
+3. Under **Scopes**, select:
+   - `read:packages`
+   - `write:packages`
+   - `delete:packages` *(optional)*
+   - `repo`
+4. Copy the generated token — you’ll need it for authentication.
+#### Login to GHCR
+
+Run the following command to log in to GitHub Container Registry:
+
+```bash
+echo <YOUR_GHCR_TOKEN> | docker login ghcr.io -u <YOUR_GITHUB_USERNAME> --password-stdin
+```
+Push the Image to GitHub Container Registry
+```bash
+docker push ghrc.io/<username>/<repo-name>
+```
 ## Kubernetes Deployment (Minikube)
 ### Start Minikube
 ```bash
