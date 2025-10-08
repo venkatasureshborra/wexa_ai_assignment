@@ -54,6 +54,5 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           kubectl set image deployment/portfolio-app \
-            portfolio-cont=$REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }}
-          kubectl rollout status deployment/portfolio-app
-
+            portfolio-cont=$REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }} -n wexa
+          kubectl rollout status deployment/portfolio-app -n wexa
