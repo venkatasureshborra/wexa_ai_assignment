@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wexa
+  labels:
+    name: wexa-ai
+
+---
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: ns-limits
+  namespace: wexa
+  labels:
+    name: resquota-ns
+spec:
+  hard:
+    pods: "10"
+    requests.cpu: "500m"
+    requests.memory: "500Mi"
+    limits.cpu: "1"
+    limits.memory: "1Gi"
+---
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: default-res-for-cont
+  namespace: wexa
+spec:
+  limits:
+  - type: Container
+    default:
+      cpu: "100m"
+      memory: "250Mi"
+    defaultRequest:
+      cpu: "20m"
+      memory: "100Mi"
+
+

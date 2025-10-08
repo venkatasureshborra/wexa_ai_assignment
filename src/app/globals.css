@@ -1,0 +1,122 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #e3f2fd);
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  color: #1e88e5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px 50px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #0d47a1;
+  margin-bottom: 10px;
+}
+
+header .subtitle {
+  font-size: 1.2rem;
+  color: #1565c0;
+  margin-bottom: 10px;
+}
+
+header .contact {
+  font-size: 0.95rem;
+}
+
+/* Sections */
+section {
+  margin-bottom: 30px;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  color: #0d47a1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #1976d2;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+section p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #444;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Skills Grid */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.skills div {
+  background-color: #e3f2fd;
+  padding: 12px 16px;
+  border-left: 4px solid #1976d2;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Experience */
+.experience h3 {
+  font-size: 1.2rem;
+  color: #0d47a1;
+  margin-bottom: 5px;
+}
+
+.experience .date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}

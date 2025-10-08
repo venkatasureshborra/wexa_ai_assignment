@@ -1,0 +1,59 @@
+name: CI/CD Pipeline_For_Portfolio_app
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: venkatasureshborra/portfolio
+
+jobs:
+  build-deploy:
+    runs-on: self-hosted
+
+    steps:
+      #Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      #Step 2: Set up Docker login to GHCR
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      #Step 3: Generate image version (E.X., v2.0, v2.1, ...)
+      - name: Generate image tag
+        id: version
+        run: |
+          VERSION_FILE=version.txt
+          if [ ! -f $VERSION_FILE ]; then
+            echo "2.0" > $VERSION_FILE
+          else
+            OLD_VERSION=$(cat $VERSION_FILE)
+            NEW_VERSION=$(echo $OLD_VERSION | awk -F. -v OFS=. '{$NF++;print}')
+            echo $NEW_VERSION > $VERSION_FILE
+          fi
+          echo "version=$(cat $VERSION_FILE)" >> $GITHUB_OUTPUT
+
+      #Step 4: Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t $REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }} .
+
+      #Step 5: Push image to GHCR
+      - name: Push Docker image
+        run: |
+          docker push $REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }}
+
+      #Step 6: Clean up local Docker images
+      - name: Cleanup local images
+        run: |
+          docker rmi $REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }} || true
+
+      #Step 7: Kubernetes deployment
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/portfolio-app \
+            portfolio-cont=$REGISTRY/$IMAGE_NAME:v${{ steps.version.outputs.version }}
+          kubectl rollout status deployment/portfolio-app
+
