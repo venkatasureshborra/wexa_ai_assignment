@@ -6,7 +6,7 @@ export default function HomePage() {
         <h1>Venkata Suresh</h1>
         <p className="subtitle">Cloud & DevOps Engineer</p>
         <p className="contact">
-          Andhra Pradesh, India •{" "}
+          Hyderabad,, TG, India •{" "}
           <a href="mailto:borrasuresh23@gmail.com">Mail</a>   {" "}
           <a href="https://www.linkedin.com/in/venkatasureshborra" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
@@ -27,7 +27,7 @@ export default function HomePage() {
         <h2>Professional Experience</h2>
         <div className="experience">
           <h3>Cloud Engineer Trainee – TekkonnectPro IT Servers</h3>
-          <span className="date">[Start Date] – [End Date]</span>
+          <span className="date">Dec 2023 - Dec 2024</span>
           <ul>
             <li>Troubleshot server issues and scaled up servers to meet business needs.</li>
             <li>Maintained licenses and resolved issues with Microsoft 365 services.</li>
@@ -63,7 +63,7 @@ export default function HomePage() {
       {/* Education */}
       <section>
         <h2>Education</h2>
-        <p>[Your Degree], [University Name], [Year of Passing]</p>
+        <p>[B.Tech, CSE], [VElTech University], [2023]</p>
       </section>
 
       {/* Footer */}
