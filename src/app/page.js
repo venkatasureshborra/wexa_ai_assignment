@@ -3,7 +3,7 @@ export default function HomePage() {
     <div className="container">
       {/* Header */}
       <header>
-        <h1>Venkata Suresh</h1>
+        <h1>Borra Venkata Suresh</h1>
         <p className="subtitle">Cloud & DevOps Engineer</p>
         <p className="contact">
           Hyderabad,, TG, India •{" "}
